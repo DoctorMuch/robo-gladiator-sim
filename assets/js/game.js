@@ -79,7 +79,7 @@ var startGame = function () {
         // call fight function with enemy-robot
         fight(pickedEnemyName);
             if (playerHealth > 0 && i < enemyNames.length - 1) {
-                const storeConfirm = confirm("The fight is over, visit the store before the next round?");
+                const storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
                 if (storeConfirm){
                     shop();
                 }
@@ -110,41 +110,41 @@ const endGame = function() {
 };
 
 const shop = function(){
-    let shopOptionPrompt = prompt(
+    let shopOptionPrompt = window.prompt(
         "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice. "
         );
         switch (shopOptionPrompt) {
             case "REFILL":
             case "refill":
                 if (playerMoney > 15){
-                    alert(`Refilling ${playerName}'s health for $15!`);
+                    window.alert(`Refilling ${playerName}'s health for $15!`);
                     playerHealth = 100;
                     playerMoney = playerMoney - 15;
                     console.log(playerName + " refilled health, which cost 15.");
                 } else {
-                    alert("You do not have enough money! Win some more battles!");
+                    window.alert("You do not have enough money! Win some more battles!");
                 }
                 break;
             
                 case "UPGRADE":
             case "upgrade":
                 if (playerMoney > 5) {
-                    alert(`Improving ${playerName}'s attack for $5!`);
+                    window.alert(`Improving ${playerName}'s attack for $5!`);
                     playerAttack = playerAttack + 3;
                     playerMoney = playerMoney - 5;
                     console.log(playerName + " upgraded attack, which cost 5.");
                 } else {
-                    alert("You do not have enough money! Win some more battles!");
+                    window.alert("You do not have enough money! Win some more battles!");
                 }
                 break;
             
             case "LEAVE":
             case "leave":
-                alert(`Nothing caught ${playerName}'s eye. Leaving the store.`)
+                window.alert(`Nothing caught ${playerName}'s eye. Leaving the store.`)
                 console.log(playerName + " left the store.")
                 break;
             default: 
-                alert("You did not pick a valid option. Try again.");
+                window.alert("You did not pick a valid option. Try again.");
 
                 shop();
                 break;
