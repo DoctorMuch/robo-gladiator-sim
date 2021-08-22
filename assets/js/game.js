@@ -72,13 +72,12 @@ var startGame = function () {
         // debugger;
         // call fight function with enemy-robot
         fight(pickedEnemyObj);
-            if (playerInfo.health > 0 && i < enemyInfo.length - 1) {
-                const storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
-                if (storeConfirm){
-                    shop();
-                }
-                
+        if (playerInfo.health > 0 && i < enemyInfo.length - 1) {
+            const storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
+            if (storeConfirm){
+                shop();
             }
+        }
         // } else {
         //     window.alert("You have lost your robot in battle! Game Over!");
         //     break;
