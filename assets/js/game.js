@@ -114,21 +114,20 @@ const endGame = function() {
 
 const shop = function(){
     let shopOptionPrompt = window.prompt(
-        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice. "
+        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter 1 to 'REFILL', 2 to 'UPGRADE', or 3 to 'LEAVE' to make a choice. "
         );
+        // could also use parseInt() as suggested in the module
+        shopOptionPrompt = Number(shopOptionPrompt);
         switch (shopOptionPrompt) {
-            case "REFILL":
-            case "refill":
+            case 1:
                 playerInfo.refillHealth();
                 break;
             
-                case "UPGRADE":
-            case "upgrade":
+            case 2:
                 playerInfo.upgradeAttack();
                 break;
             
-            case "LEAVE":
-            case "leave":
+            case 3:
                 window.alert(`Nothing caught ${playerInfo.name}'s eye. Leaving the store.`)
                 console.log(playerInfo.name + " left the store.")
                 break;
@@ -168,9 +167,9 @@ const playerInfo = {
     },
     refillHealth: function(){
         if (this.money >= 15) {
-            window.alert(`Restoring ${this.name}'s health for 15 dollars!`);
-            this.health = 100;
-            this.money -=15;
+            window.alert(`Restoring ${this.name}'s health for 12 dollars!`);
+            this.health = Math.round((100-playerInfo.health)/2 + playerInfo.health);
+            this.money -=12;
         } else {
             window.alert(`You don't have enough money for this item. Go beat some robots!`);
         }
@@ -178,9 +177,9 @@ const playerInfo = {
     
     upgradeAttack: function(){
         if (this.money >= 5){
-            window.alert(`Upgrading ${this.name}'s attack for 5 dollars!`);
-            this.attack += 3;
-            this.money -= 5;
+            window.alert(`Upgrading ${this.name}'s attack by 5 points for 8 dollars!`);
+            this.attack += 5;
+            this.money -= 8;
         } else {
             window.alert(`You don't have enough money for this item. Go beat some robots!`);
         }
