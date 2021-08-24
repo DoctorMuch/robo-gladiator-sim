@@ -132,7 +132,17 @@ const endGame = function() {
     } else {
         window.alert("You've lost your robot in battle.");
     }
-    
+    // setting high score
+    let highScore = localStorage.getItem('highScore');
+    if (playerInfo.money < highScore) {
+      window.alert("I'm sorry to say that you did not beat the current Robo-Champ's score of " + highScore + ".");
+    }
+    else if (playerInfo.money > highScore) {
+      localStorage.removeItem('highScore');
+      localStorage.setItem('highScore', playerInfo.money);
+      localStorage.setItem('roboChamp', playerInfo.name);
+      window.alert("Congratulations, " + playerInfo.name + "! You are the new Robo-Champ, with a high score of " + playerInfo.money + "!");
+    }
     const playAgainConfirm = window.confirm("Would you like to play again?");
 
     if  (playAgainConfirm) {
